@@ -62,6 +62,14 @@
                                 ['route' => 'blogs.index', 'icon' => 'far fa-circle', 'label' => 'Create Blogs'],
                                 ['route' => 'web-terms.index', 'icon' => 'far fa-circle', 'label' => 'Terms & Conditions'],
                                 ['route' => 'web-privacy-policies.index', 'icon' => 'far fa-circle', 'label' => 'Privacy & Policy'],
+                                ['route' => 'global-electrician-days.index', 'icon' => 'far fa-circle', 'label' => 'GlobalElectricianDay'],
+                                ['route' => 'timelines.index', 'icon' => 'far fa-circle', 'label' => 'GlobalTimeline'],
+                                ['route' => 'movements.index', 'icon' => 'far fa-circle', 'label' => 'GlobalMovement'],
+                                ['route' => 'global-multimedia.index', 'icon' => 'far fa-circle', 'label' => 'GlobalMultimedia'],
+                                ['route' => 'electricianDay-images.index', 'icon' => 'far fa-circle', 'label' => 'ElectricianDayImage'],
+                                ['route' => 'electricianDay-posts.index', 'icon' => 'far fa-circle', 'label' => 'ElectricianDayPost'],
+                                ['route' => 'electrician-day-banners.index', 'icon' => 'far fa-circle', 'label' => 'ElectricianDayBanners'],
+                                ['route' => 'electrician-day-videos.index', 'icon' => 'far fa-circle', 'label' => 'ElectricianDayVideos'],
 
                             ];
                         @endphp

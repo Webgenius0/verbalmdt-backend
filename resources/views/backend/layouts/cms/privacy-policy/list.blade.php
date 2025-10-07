@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        {{-- Table Section --}}
+{{--         Table Section--}}
         <div class="card">
             <div class="card-body">
                 @if(session('success'))

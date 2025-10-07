@@ -3,6 +3,15 @@
 use App\Http\Controllers\API\Auth\AuthController;
 use App\Http\Controllers\API\Blogs\BlogApiController;
 use App\Http\Controllers\API\ContactUs\ContactController;
+
+use App\Http\Controllers\API\ElectricianDayApi\ElectricianDayBannerApiController;
+use App\Http\Controllers\API\ElectricianDayApi\ElectricianDayImageApiController;
+use App\Http\Controllers\API\ElectricianDayApi\ElectricianDayPostApiController;
+use App\Http\Controllers\API\ElectricianDayApi\ElectricianDayVideoApiController;
+use App\Http\Controllers\API\GlobalElectricianDayApi\GlobalElectricianDayController;
+use App\Http\Controllers\API\GlobalElectricianDayApi\GlobalMultimediaApiController;
+use App\Http\Controllers\API\GlobalElectricianDayApi\MovementApiController;
+use App\Http\Controllers\API\GlobalElectricianDayApi\TimelineApiController;
 use App\Http\Controllers\API\PrivacyPolicy\PrivacyPolicyController;
 use App\Http\Controllers\API\Terms\TermController;
 use Illuminate\Support\Facades\Route;
@@ -33,3 +42,29 @@ Route::get('/privacy-policies', [PrivacyPolicyController::class, 'index']);
 
 
 Route::apiResource('/api-blogs', BlogApiController::class);
+
+
+
+Route::get('/global-electrician-days', [GlobalElectricianDayController::class, 'index']);
+Route::get('/global-electrician-days/{id}', [GlobalElectricianDayController::class, 'show']);
+
+Route::get('/timelines', [TimelineApiController::class, 'index']);
+Route::get('/timelines/{id}', [TimelineApiController::class, 'show']);
+
+Route::get('/movements', [MovementApiController::class, 'index']);
+Route::get('/movements/{id}', [MovementApiController::class, 'show']);
+
+Route::get('/global-multimedia', [GlobalMultimediaApiController::class, 'index']);
+Route::get('/global-multimedia/{id}', [GlobalMultimediaApiController::class, 'show']);
+
+Route::get('/electrician-day-banners', [ElectricianDayBannerApiController::class, 'index']);
+Route::get('/electrician-day-banners/{id}', [ElectricianDayBannerApiController::class, 'show']);
+
+Route::get('/electrician-day-posts', [ElectricianDayPostApiController::class, 'index']);
+Route::get('/electrician-day-posts/{id}', [ElectricianDayPostApiController::class, 'show']);
+
+Route::get('/electrician-day-images', [ElectricianDayImageApiController::class, 'index']);
+Route::get('/electrician-day-images/{id}', [ElectricianDayImageApiController::class, 'show']);
+
+Route::get('/electrician-day-videos', [ElectricianDayVideoApiController::class, 'index']);
+Route::get('/electrician-day-videos/{id}', [ElectricianDayVideoApiController::class, 'show']);

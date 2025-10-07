@@ -30,7 +30,7 @@ class ContactImageController extends Controller
             'status' => 'nullable|boolean',
         ]);
 
-        // Store image in storage/app/public/contact-images
+
         $path = $request->file('image')->store('contact-images', 'public');
 
         ContactImage::create([
@@ -47,7 +47,7 @@ class ContactImageController extends Controller
     {
         $contactImage = ContactImage::findOrFail($id);
 
-        // Delete image file from storage
+
         if ($contactImage->image && file_exists(storage_path('app/public/'.$contactImage->image))) {
             unlink(storage_path('app/public/'.$contactImage->image));
         }
