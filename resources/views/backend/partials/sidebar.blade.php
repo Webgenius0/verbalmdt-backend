@@ -88,22 +88,63 @@
 
 
 
-{{--                <!-- =================== Single Links =================== -->--}}
-{{--                <li class="nav-item">--}}
-{{--                    <a href=""--}}
-{{--                       class="nav-link {{ request()->routeIs('share.experiance.index') ? 'active' : '' }}">--}}
-{{--                        <i class="nav-icon fas fa-star"></i>--}}
-{{--                        <p>Share Experience</p>--}}
-{{--                    </a>--}}
-{{--                </li>--}}
 
-{{--                <li class="nav-item">--}}
-{{--                    <a href=""--}}
-{{--                       class="nav-link {{ request()->routeIs('enrollments.index') ? 'active' : '' }}">--}}
+                {{--                <!-- =================== Our Services =================== -->--}}
+                @php
+                    $serviceRoutes = [
+                        'service-categories.index','service-subcategories.index','pricing-types.index'// Add more routes here if needed
+                    ];
+                    $serviceOpen = collect($serviceRoutes)->contains(fn($r) => request()->routeIs($r) || request()->is("admin/{$r}/*"));
+                @endphp
+
+                <li class="nav-item {{ $serviceOpen ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ $serviceOpen ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-concierge-bell"></i>
+                        <p>
+                            Our Services
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+                        @php
+                            $subMenu = [
+                                ['route' => 'service-categories.index', 'icon' => 'far fa-circle', 'label' => 'Category'],
+                                ['route' => 'service-subcategories.index', 'icon' => 'far fa-circle', 'label' => 'SubCategory'],
+                                ['route' => 'pricing-types.index', 'icon' => 'far fa-circle', 'label' => 'PricingTypes'],
+                            ];
+                        @endphp
+
+                        @foreach($subMenu as $item)
+                            <li class="nav-item">
+                                <a href="{{ route($item['route']) }}"
+                                   class="nav-link {{ request()->routeIs($item['route']) ? 'active' : '' }}">
+                                    <i class="{{ $item['icon'] }} nav-icon"></i>
+                                    <p>{{ $item['label'] }}</p>
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
+
+
+                <!-- =================== Enrollment Register =================== -->
+                <li class="nav-item">
+                    <a href="{{route('global-electrician-registrations.list')}}"
+                       class="nav-link {{ request()->routeIs('share.experiance.index') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-clipboard-list"></i>
+                        <p>Enroll Register</p>
+                    </a>
+                </li>
+                <!-- =================== Enrollment Sponsor =================== -->
+                <li class="nav-item">
+                    <a href="{{route('backend.global_sponsors.index')}}"
+                       class="nav-link {{ request()->routeIs('enrollments.index') ? 'active' : '' }}">
 {{--                        <i class="fas fa-user-graduate nav-icon"></i>--}}
-{{--                        <p>Enrollments</p>--}}
-{{--                    </a>--}}
-{{--                </li>--}}
+                        <i class="fas fa-user-tie nav-icon"></i>
+                        <p>Enroll Sponsor</p>
+                    </a>
+                </li>
 
 {{--                <li class="nav-item">--}}
 {{--                    <a href="{{route('blogs.index')}}"--}}

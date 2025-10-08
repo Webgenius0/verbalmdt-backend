@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Http\Controllers\Web\GlobalElectricianEnrollRegistrations;
+
+use App\Http\Controllers\Controller;
+use App\Models\GlobalElectricianRegistration;
+use Illuminate\Http\Request;
+
+class GlobalElectricianRegistrationController extends Controller
+{
+    public function index(Request $request)
+    {
+        $search = $request->get('search');
+        $perPage = $request->get('per_page', 10);
+
+        $query = GlobalElectricianRegistration::query();
+
+        if ($search) {
+            $query->where(function($q) use ($search) {
+                $q->where('name', 'like', "%{$search}%")
+                    ->orWhere('phone', 'like', "%{$search}%")
+                    ->orWhere('email', 'like', "%{$search}%")
+                    ->orWhere('city', 'like', "%{$search}%");
+            });
+        }
+
+        $registrations = $query->latest()->paginate($perPage)->withQueryString();
+
+        return view('backend.layouts.GlobalElectricianEnrollRegistrations.list', compact('registrations'));
+    }
+}

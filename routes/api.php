@@ -12,6 +12,8 @@ use App\Http\Controllers\API\GlobalElectricianDayApi\GlobalElectricianDayControl
 use App\Http\Controllers\API\GlobalElectricianDayApi\GlobalMultimediaApiController;
 use App\Http\Controllers\API\GlobalElectricianDayApi\MovementApiController;
 use App\Http\Controllers\API\GlobalElectricianDayApi\TimelineApiController;
+use App\Http\Controllers\API\GlobalElectricianRegistrations\GlobalElectricianRegistrationApiController;
+use App\Http\Controllers\API\GlobalElectricianSponsor\GlobalElectricianSponsorApiController;
 use App\Http\Controllers\API\PrivacyPolicy\PrivacyPolicyController;
 use App\Http\Controllers\API\Terms\TermController;
 use Illuminate\Support\Facades\Route;
@@ -39,6 +41,12 @@ Route::apiResource('contacts', ContactController::class);
 Route::get('contact-images', [ContactController::class, 'imagesGet']);
 Route::get('/terms', [TermController::class, 'index']);
 Route::get('/privacy-policies', [PrivacyPolicyController::class, 'index']);
+
+//global-electrician-registrations
+Route::post('/global-electrician-registrations', [GlobalElectricianRegistrationApiController::class, 'store']);
+
+//global-electrician-Sponsor
+Route::post('global-electrician-sponsors', [GlobalElectricianSponsorApiController::class, 'store']);
 
 
 Route::apiResource('/api-blogs', BlogApiController::class);

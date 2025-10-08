@@ -14,6 +14,11 @@ use App\Http\Controllers\Web\GlobalElectricianDay\GlobalElectricianDayController
 use App\Http\Controllers\Web\GlobalElectricianDay\GlobalMultimediaController;
 use App\Http\Controllers\Web\GlobalElectricianDay\MovementController;
 use App\Http\Controllers\Web\GlobalElectricianDay\TimelineController;
+use App\Http\Controllers\Web\GlobalElectricianEnrollRegistrations\GlobalElectricianRegistrationController;
+use App\Http\Controllers\Web\GlobalElectricianSponsorWeb\GlobalElectricianSponsorController;
+use App\Http\Controllers\Web\OurServices\Category\ServiceCategoryController;
+use App\Http\Controllers\Web\OurServices\PricingType\PricingTypeController;
+use App\Http\Controllers\Web\OurServices\SubCategory\ServiceSubcategoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -55,5 +60,17 @@ Route::resource('electricianDay-posts', ElectricianDayPostController::class)->ex
 Route::resource('electrician-day-banners', ElectricianDayBannerController::class)->except(['show']);
 Route::resource('electrician-day-videos', ElectricianDayVideoController::class);
 
+//ourServices/Category
+Route::resource('service-categories', ServiceCategoryController::class);
+//ourServices/Sub-Category
+Route::resource('service-subcategories',ServiceSubcategoryController::class);
+//ourServices/pricing_types
+Route::resource('pricing-types', PricingTypeController::class);
+//GlobalElectricianEnrollRegistrations
+Route::get('/admin/global-electrician-registrations', [GlobalElectricianRegistrationController::class, 'index'])
+    ->name('global-electrician-registrations.list');
+//GlobalElectricianEnrollSponsor
+Route::get('global-electrician-sponsors', [GlobalElectricianSponsorController::class, 'index'])
+    ->name('backend.global_sponsors.index');
 
 require __DIR__.'/auth.php';
