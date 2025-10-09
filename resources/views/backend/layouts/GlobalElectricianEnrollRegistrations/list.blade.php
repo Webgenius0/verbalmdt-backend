@@ -1,4 +1,3 @@
-
 @extends('backend.partials.master')
 
 @section('content')
@@ -6,7 +5,7 @@
         <!-- Header Section -->
         <div class="content-header">
             <div class="container-fluid d-flex justify-content-between align-items-center">
-                <h1 class="m-0">Registrations For Global Electrician Day-2026 </h1>
+                <h1 class="m-0">Registrations For Global Electrician Day-2026</h1>
                 <div>
                     <a href="{{ route('dashboard') }}" class="btn btn-info btn-sm">
                         <i class="fas fa-arrow-left"></i> Back
@@ -37,7 +36,7 @@
                             </div>
 
                             <div class="col-md-2">
-                                <button type="submit" class="btn btn-info ">
+                                <button type="submit" class="btn btn-info">
                                     <i class="fas fa-filter"></i> Filter
                                 </button>
                             </div>
@@ -62,9 +61,11 @@
                                 <th>Country</th>
                                 <th>State</th>
                                 <th>City</th>
-                                <th>county</th>
-                                <th>Zip Code</th>
+                                <th>County</th>
                                 <th>Parish</th>
+                                <th>Zip Code</th>
+                                <th>Licence No</th>
+                                <th>Licence Agency URL</th>
                                 <th>Message</th>
                                 <th>Date</th>
                             </tr>
@@ -75,19 +76,33 @@
                                     <td class="text-center">{{ $registrations->firstItem() + $index }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->email ?? 'N/A' }}</td>
-                                    <td>{{ $item->phone }}</td>
+                                    <td>{{ $item->phone ?? 'N/A' }}</td>
                                     <td>{{ $item->country ?? 'N/A' }}</td>
                                     <td>{{ $item->state ?? 'N/A' }}</td>
                                     <td>{{ $item->city ?? 'N/A' }}</td>
-                                    <td>{{ $item->parish?? 'N/A' }}</td>
                                     <td>{{ $item->county ?? 'N/A' }}</td>
+                                    <td>{{ $item->parish ?? 'N/A' }}</td>
                                     <td>{{ $item->zip_number ?? 'N/A' }}</td>
-                                    <td>{{ Str::limit($item->message, 60) }}</td>
+
+                                    <!-- 🆕 Added Licence Fields -->
+                                    <td>{{ $item->licence_number ?? 'N/A' }}</td>
+                                    <td>
+                                        @if($item->licence_agency_url)
+                                            <a href="{{ $item->licence_agency_url }}" target="_blank" title="Visit Licence Agency">
+                                                Visit <i class="fas fa-external-link-alt"></i>
+                                            </a>
+                                        @else
+                                            N/A
+                                        @endif
+                                    </td>
+                                    <!-- End New Fields -->
+
+                                    <td>{{ Str::limit($item->message, 60) ?? 'N/A' }}</td>
                                     <td>{{ $item->created_at->format('d M, Y') }}</td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="9" class="text-center text-muted py-3">
+                                    <td colspan="14" class="text-center text-muted py-3">
                                         No registrations found
                                     </td>
                                 </tr>

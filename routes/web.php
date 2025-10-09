@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Web\BeAHost\QuestionController;
 use App\Http\Controllers\Web\Blogs\BlogController;
 use App\Http\Controllers\Web\CMS\PrivacyPolicyController;
 use App\Http\Controllers\Web\CMS\TermsController;
@@ -72,5 +73,16 @@ Route::get('/admin/global-electrician-registrations', [GlobalElectricianRegistra
 //GlobalElectricianEnrollSponsor
 Route::get('global-electrician-sponsors', [GlobalElectricianSponsorController::class, 'index'])
     ->name('backend.global_sponsors.index');
+
+
+Route::prefix('questions')->group(function () {
+    Route::get('/', [QuestionController::class, 'index'])->name('questions.index');
+    Route::get('/create', [QuestionController::class, 'create'])->name('questions.create');
+    Route::post('/', [QuestionController::class, 'store'])->name('questions.store');
+    Route::get('/{id}', [QuestionController::class, 'show'])->name('questions.show');
+    Route::get('/{id}/edit', [QuestionController::class, 'edit'])->name('questions.edit');
+    Route::put('/{id}', [QuestionController::class, 'update'])->name('questions.update');
+    Route::delete('/{id}', [QuestionController::class, 'destroy'])->name('questions.destroy');
+});
 
 require __DIR__.'/auth.php';

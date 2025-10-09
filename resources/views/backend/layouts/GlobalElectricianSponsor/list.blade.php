@@ -24,7 +24,7 @@
                         <form method="GET" class="row g-2">
                             <div class="col-md-4">
                                 <input type="text" name="search" value="{{ request('search') }}" class="form-control"
-                                       placeholder="Search by name, company, email, or phone...">
+                                       placeholder="Search by name, company, email, phone, or licence...">
                             </div>
 
                             <div class="col-md-2">
@@ -65,6 +65,8 @@
                                 <th>Parish</th>
                                 <th>County</th>
                                 <th>Zip Code</th>
+                                <th>Licence Number</th>
+                                <th>Licence Agency URL</th>
                                 <th>Message</th>
                                 <th>Date</th>
                             </tr>
@@ -83,12 +85,22 @@
                                     <td>{{ $item->parish ?? 'N/A' }}</td>
                                     <td>{{ $item->county ?? 'N/A' }}</td>
                                     <td>{{ $item->zip_number ?? 'N/A' }}</td>
-                                    <td>{{ Str::limit($item->message, 60) }}</td>
+                                    <td>{{ $item->licence_number ?? 'N/A' }}</td>   <!-- new -->
+                                    <td>
+                                        @if($item->licence_agency_url)
+                                            <a href="{{ $item->licence_agency_url }}" target="_blank" title="Visit Licence Agency">
+                                                Visit <i class="fas fa-external-link-alt"></i>
+                                            </a>
+                                        @else
+                                            N/A
+                                        @endif
+                                    </td>
+                                    <td>{{($item->message) }}</td>
                                     <td>{{ $item->created_at->format('d M, Y') }}</td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="13" class="text-center text-muted py-3">
+                                    <td colspan="15" class="text-center text-muted py-3">
                                         No sponsors found
                                     </td>
                                 </tr>
@@ -106,4 +118,3 @@
         </section>
     </div>
 @endsection
-

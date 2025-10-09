@@ -23,5 +23,7 @@ class GlobalElectricianSponsor extends Model
         'parish',
         'county',
         'message',
+        'licence_number',
+        'licence_agency_url',
     ];
 }

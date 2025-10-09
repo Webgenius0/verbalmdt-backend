@@ -25,5 +25,7 @@ class GlobalElectricianRegistration extends Model
         'county',
         'zip_number',
         'message',
+        'licence_number',
+        'licence_agency_url',
     ];
 }

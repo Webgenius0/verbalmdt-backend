@@ -21,7 +21,9 @@ class GlobalElectricianSponsorController extends Controller
                     ->orWhere('company_name', 'like', "%{$search}%")
                     ->orWhere('email', 'like', "%{$search}%")
                     ->orWhere('phone', 'like', "%{$search}%")
-                    ->orWhere('city', 'like', "%{$search}%");
+                    ->orWhere('city', 'like', "%{$search}%")
+                    ->orWhere('licence_number', 'like', "%{$search}%")   // new
+                    ->orWhere('licence_agency_url', 'like', "%{$search}%"); // new
             });
         }
 

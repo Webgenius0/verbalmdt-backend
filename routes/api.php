@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\Auth\AuthController;
+use App\Http\Controllers\API\BeAHost\QuestionController;
 use App\Http\Controllers\API\Blogs\BlogApiController;
 use App\Http\Controllers\API\ContactUs\ContactController;
 
@@ -76,3 +77,6 @@ Route::get('/electrician-day-images/{id}', [ElectricianDayImageApiController::cl
 
 Route::get('/electrician-day-videos', [ElectricianDayVideoApiController::class, 'index']);
 Route::get('/electrician-day-videos/{id}', [ElectricianDayVideoApiController::class, 'show']);
+
+Route::get('/questions', [QuestionController::class, 'index']);
+Route::get('/questions/{id}', [QuestionController::class, 'show']);

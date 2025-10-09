@@ -138,7 +138,7 @@
                 </li>
                 <!-- =================== Enrollment Sponsor =================== -->
                 <li class="nav-item">
-                    <a href="{{route('backend.global_sponsors.index')}}"
+                    <a href=""
                        class="nav-link {{ request()->routeIs('enrollments.index') ? 'active' : '' }}">
 {{--                        <i class="fas fa-user-graduate nav-icon"></i>--}}
                         <i class="fas fa-user-tie nav-icon"></i>
@@ -146,15 +146,46 @@
                     </a>
                 </li>
 
-{{--                <li class="nav-item">--}}
-{{--                    <a href="{{route('blogs.index')}}"--}}
-{{--                       class="nav-link {{ request()->routeIs('web.blogs.index') ? 'active' : '' }}">--}}
-{{--                        <i class="nav-icon fas fa-certificate"></i>--}}
-{{--                        <p>Blogs</p>--}}
-{{--                    </a>--}}
-{{--                </li>--}}
+                @php
+                    $hostRoutes = [
+                        'questions.index',  // Add more routes if needed
+                    ];
+                    $hostOpen = collect($hostRoutes)->contains(fn($r) => request()->routeIs($r) || request()->is("admin/{$r}/*"));
+                @endphp
 
-{{--                <li class="nav-item">--}}
+                <li class="nav-item {{ $hostOpen ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ $hostOpen ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-user-friends"></i>
+                        <p>
+                            Be a Host
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+                        @php
+                            $subMenu = [
+                                ['route' => 'questions.index', 'icon' => 'far fa-circle', 'label' => 'Questions'],
+//                                ['route' => 'hosts.index', 'icon' => 'far fa-circle', 'label' => 'Host List'],
+                            ];
+                        @endphp
+
+                        @foreach($subMenu as $item)
+                            <li class="nav-item">
+                                <a href="{{ route($item['route']) }}"
+                                   class="nav-link {{ request()->routeIs($item['route']) ? 'active' : '' }}">
+                                    <i class="{{ $item['icon'] }} nav-icon"></i>
+                                    <p>{{ $item['label'] }}</p>
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
+
+
+
+
+                {{--                <li class="nav-item">--}}
 {{--                    <a href="{{route('contacts.web.index')}}"--}}
 {{--                       class="nav-link {{ request()->routeIs('earning.index') || request()->is('admin/earning/*') ? 'active' : '' }}">--}}
 {{--                        <i class="fas fa-phone-alt"></i>--}}
