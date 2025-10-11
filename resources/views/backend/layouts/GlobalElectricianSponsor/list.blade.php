@@ -110,7 +110,7 @@
                     </div>
 
                     <div class="card-footer">
-                        {{ $sponsors->links() }}
+                        {{ $sponsors->links('pagination::bootstrap-5') }}
                     </div>
                 </div>
 

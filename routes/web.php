@@ -17,6 +17,7 @@ use App\Http\Controllers\Web\GlobalElectricianDay\MovementController;
 use App\Http\Controllers\Web\GlobalElectricianDay\TimelineController;
 use App\Http\Controllers\Web\GlobalElectricianEnrollRegistrations\GlobalElectricianRegistrationController;
 use App\Http\Controllers\Web\GlobalElectricianSponsorWeb\GlobalElectricianSponsorController;
+use App\Http\Controllers\Web\HostEnrollment\HostEnrollmentController;
 use App\Http\Controllers\Web\OurServices\Category\ServiceCategoryController;
 use App\Http\Controllers\Web\OurServices\PricingType\PricingTypeController;
 use App\Http\Controllers\Web\OurServices\SubCategory\ServiceSubcategoryController;
@@ -60,6 +61,8 @@ Route::resource('electricianDay-images', ElectricianDayImageController::class);
 Route::resource('electricianDay-posts', ElectricianDayPostController::class)->except(['show']);
 Route::resource('electrician-day-banners', ElectricianDayBannerController::class)->except(['show']);
 Route::resource('electrician-day-videos', ElectricianDayVideoController::class);
+
+Route::resource('hostEnrollments', HostEnrollmentController::class);
 
 //ourServices/Category
 Route::resource('service-categories', ServiceCategoryController::class);

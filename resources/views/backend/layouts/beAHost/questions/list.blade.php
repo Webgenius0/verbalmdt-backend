@@ -146,7 +146,7 @@
 
                         <!-- Pagination -->
                         <div class="d-flex justify-content-center mt-3">
-                            {{ $questions->links() }}
+                            {{ $questions->links('pagination::bootstrap-5') }}
                         </div>
                     </div>
                 </div>

@@ -97,7 +97,7 @@
                                     </td>
                                     <!-- End New Fields -->
 
-                                    <td>{{ Str::limit($item->message, 60) ?? 'N/A' }}</td>
+                                    <td>{{ ($item->message) ?? 'N/A' }}</td>
                                     <td>{{ $item->created_at->format('d M, Y') }}</td>
                                 </tr>
                             @empty
@@ -112,7 +112,7 @@
                     </div>
 
                     <div class="card-footer">
-                        {{ $registrations->links() }}
+                        {{ $registrations->links('pagination::bootstrap-5') }}
                     </div>
                 </div>
 

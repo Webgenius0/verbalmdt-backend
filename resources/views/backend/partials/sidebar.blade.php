@@ -138,7 +138,7 @@
                 </li>
                 <!-- =================== Enrollment Sponsor =================== -->
                 <li class="nav-item">
-                    <a href=""
+                    <a href="{{route('backend.global_sponsors.index')}}"
                        class="nav-link {{ request()->routeIs('enrollments.index') ? 'active' : '' }}">
 {{--                        <i class="fas fa-user-graduate nav-icon"></i>--}}
                         <i class="fas fa-user-tie nav-icon"></i>
@@ -166,7 +166,7 @@
                         @php
                             $subMenu = [
                                 ['route' => 'questions.index', 'icon' => 'far fa-circle', 'label' => 'Questions'],
-//                                ['route' => 'hosts.index', 'icon' => 'far fa-circle', 'label' => 'Host List'],
+                                ['route' => 'hostEnrollments.index', 'icon' => 'far fa-circle', 'label' => 'HostEnrollments'],
                             ];
                         @endphp
 

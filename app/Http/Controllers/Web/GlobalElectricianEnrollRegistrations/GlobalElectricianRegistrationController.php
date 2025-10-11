@@ -14,7 +14,7 @@ class GlobalElectricianRegistrationController extends Controller
     public function index(Request $request)
     {
         $search = $request->get('search');
-        $perPage = $request->get('per_page', 10);
+        $perPage = $request->get('per_page', 2);
 
         $query = GlobalElectricianRegistration::query();
 

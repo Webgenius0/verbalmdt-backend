@@ -15,6 +15,7 @@ use App\Http\Controllers\API\GlobalElectricianDayApi\MovementApiController;
 use App\Http\Controllers\API\GlobalElectricianDayApi\TimelineApiController;
 use App\Http\Controllers\API\GlobalElectricianRegistrations\GlobalElectricianRegistrationApiController;
 use App\Http\Controllers\API\GlobalElectricianSponsor\GlobalElectricianSponsorApiController;
+use App\Http\Controllers\API\HostEnrollmentApi\HostEnrollmentApiController;
 use App\Http\Controllers\API\PrivacyPolicy\PrivacyPolicyController;
 use App\Http\Controllers\API\Terms\TermController;
 use Illuminate\Support\Facades\Route;
@@ -80,3 +81,8 @@ Route::get('/electrician-day-videos/{id}', [ElectricianDayVideoApiController::cl
 
 Route::get('/questions', [QuestionController::class, 'index']);
 Route::get('/questions/{id}', [QuestionController::class, 'show']);
+
+
+
+Route::post('/host-enrollments', [HostEnrollmentApiController::class, 'store']);
+Route::get('/host-enrollments', [HostEnrollmentApiController::class, 'index']);
